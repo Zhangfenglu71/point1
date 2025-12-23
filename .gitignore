@@ -40,3 +40,24 @@ data/
 *.npy
 *.mp4
 *.avi
+
+# generated artifacts
+checkpoints/
+samples*/
+runs/
+outputs/
+logs/
+
+# python
+__pycache__/
+*.pyc
+
+# large files / data
+data/
+*.pth
+*.pt
+*.ckpt
+*.npz
+*.npy
+*.mp4
+*.avi
