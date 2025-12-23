@@ -1,0 +1,550 @@
+out,cfg_w,lambda_walk,lambda_default,overall,box,jump,run,walk
+samples_grid/w2.4_lw1.25,2.4,1.25,1.0,73.21,,,,
+samples_grid/w2.4_lw1.30,2.4,1.30,1.0,74.11,,,,
+samples_grid/w2.4_lw1.35,2.4,1.35,1.0,74.11,,,,
+samples_grid/w2.4_lw1.40,2.4,1.40,1.0,72.32,,,,
+samples_grid/w2.4_lw1.45,2.4,1.45,1.0,74.11,,,,
+samples_grid/w2.6_lw1.25,2.6,1.25,1.0,74.11,,,,
+samples_grid/w2.6_lw1.30,2.6,1.30,1.0,75.00,,,,
+samples_grid/w2.6_lw1.35,2.6,1.35,1.0,74.11,,,,
+samples_grid/w2.6_lw1.40,2.6,1.40,1.0,72.32,,,,
+samples_grid/w2.6_lw1.45,2.6,1.45,1.0,73.21,,,,
+samples_grid/w2.8_lw1.25,2.8,1.25,1.0,74.11,,,,
+samples_grid/w2.8_lw1.30,2.8,1.30,1.0,72.32,,,,
+samples_grid/w2.8_lw1.35,2.8,1.35,1.0,71.43,,,,
+samples_grid/w2.8_lw1.40,2.8,1.40,1.0,72.32,,,,
+samples_grid/w2.8_lw1.45,2.8,1.45,1.0,70.54,,,,
+samples_grid/w3.0_lw1.25,3.0,1.25,1.0,75.00,,,,
+samples_grid/w3.0_lw1.30,3.0,1.30,1.0,74.11,,,,
+samples_grid/w3.0_lw1.35,3.0,1.35,1.0,75.00,,,,
+samples_grid/w3.0_lw1.40,3.0,1.40,1.0,75.00,,,,
+samples_grid/w3.0_lw1.45,3.0,1.45,1.0,71.43,,,,
+samples_grid/w3.2_lw1.25,3.2,1.25,1.0,74.11,,,,
+samples_grid/w3.2_lw1.30,3.2,1.30,1.0,76.79,,,,
+samples_grid/w3.2_lw1.35,3.2,1.35,1.0,74.11,,,,
+samples_grid/w3.2_lw1.40,3.2,1.40,1.0,72.32,,,,
+samples_grid/w3.2_lw1.45,3.2,1.45,1.0,73.21,,,,
+=== w=2.4  walk_lambda=1.25 -> samples_grid/w2.4_lw1.25 ===
+[sample_video_label_flow] OK subj=S10 actions=['box', 'jump', 'run', 'walk'] out=samples_grid/w2.4_lw1.25
+[sample_video_label_flow] done -> samples_grid/w2.4_lw1.25
+[eval_gen_with_cls] device = cuda
+[eval_gen_with_cls] root   = samples_grid/w2.4_lw1.25
+[eval_gen_with_cls] ckpt   = checkpoints/radar_cls_resnet18_best.pth
+[GenRadarDataset] root=samples_grid/w2.4_lw1.25, num_images=112
+  box: 28
+  jump: 28
+  run: 28
+  walk: 28
+[eval_gen_with_cls] Loaded classifier, val_acc(best)=1.0000
+
+=== Generated Spectrogram Classification Accuracy ===
+Overall ACC: 73.21%
+Per-class ACC:
+  box  : 100.00%
+  jump : 64.29%
+  run  : 60.71%
+  walk : 67.86%
+
+=== w=2.4  walk_lambda=1.30 -> samples_grid/w2.4_lw1.30 ===
+[sample_video_label_flow] OK subj=S10 actions=['box', 'jump', 'run', 'walk'] out=samples_grid/w2.4_lw1.30
+[sample_video_label_flow] done -> samples_grid/w2.4_lw1.30
+[eval_gen_with_cls] device = cuda
+[eval_gen_with_cls] root   = samples_grid/w2.4_lw1.30
+[eval_gen_with_cls] ckpt   = checkpoints/radar_cls_resnet18_best.pth
+[GenRadarDataset] root=samples_grid/w2.4_lw1.30, num_images=112
+  box: 28
+  jump: 28
+  run: 28
+  walk: 28
+[eval_gen_with_cls] Loaded classifier, val_acc(best)=1.0000
+
+=== Generated Spectrogram Classification Accuracy ===
+Overall ACC: 74.11%
+Per-class ACC:
+  box  : 100.00%
+  jump : 64.29%
+  run  : 60.71%
+  walk : 71.43%
+
+=== w=2.4  walk_lambda=1.35 -> samples_grid/w2.4_lw1.35 ===
+[sample_video_label_flow] OK subj=S10 actions=['box', 'jump', 'run', 'walk'] out=samples_grid/w2.4_lw1.35
+[sample_video_label_flow] done -> samples_grid/w2.4_lw1.35
+[eval_gen_with_cls] device = cuda
+[eval_gen_with_cls] root   = samples_grid/w2.4_lw1.35
+[eval_gen_with_cls] ckpt   = checkpoints/radar_cls_resnet18_best.pth
+[GenRadarDataset] root=samples_grid/w2.4_lw1.35, num_images=112
+  box: 28
+  jump: 28
+  run: 28
+  walk: 28
+[eval_gen_with_cls] Loaded classifier, val_acc(best)=1.0000
+
+=== Generated Spectrogram Classification Accuracy ===
+Overall ACC: 74.11%
+Per-class ACC:
+  box  : 100.00%
+  jump : 64.29%
+  run  : 60.71%
+  walk : 71.43%
+
+=== w=2.4  walk_lambda=1.40 -> samples_grid/w2.4_lw1.40 ===
+[sample_video_label_flow] OK subj=S10 actions=['box', 'jump', 'run', 'walk'] out=samples_grid/w2.4_lw1.40
+[sample_video_label_flow] done -> samples_grid/w2.4_lw1.40
+[eval_gen_with_cls] device = cuda
+[eval_gen_with_cls] root   = samples_grid/w2.4_lw1.40
+[eval_gen_with_cls] ckpt   = checkpoints/radar_cls_resnet18_best.pth
+[GenRadarDataset] root=samples_grid/w2.4_lw1.40, num_images=112
+  box: 28
+  jump: 28
+  run: 28
+  walk: 28
+[eval_gen_with_cls] Loaded classifier, val_acc(best)=1.0000
+
+=== Generated Spectrogram Classification Accuracy ===
+Overall ACC: 72.32%
+Per-class ACC:
+  box  : 100.00%
+  jump : 64.29%
+  run  : 60.71%
+  walk : 64.29%
+
+=== w=2.4  walk_lambda=1.45 -> samples_grid/w2.4_lw1.45 ===
+[sample_video_label_flow] OK subj=S10 actions=['box', 'jump', 'run', 'walk'] out=samples_grid/w2.4_lw1.45
+[sample_video_label_flow] done -> samples_grid/w2.4_lw1.45
+[eval_gen_with_cls] device = cuda
+[eval_gen_with_cls] root   = samples_grid/w2.4_lw1.45
+[eval_gen_with_cls] ckpt   = checkpoints/radar_cls_resnet18_best.pth
+[GenRadarDataset] root=samples_grid/w2.4_lw1.45, num_images=112
+  box: 28
+  jump: 28
+  run: 28
+  walk: 28
+[eval_gen_with_cls] Loaded classifier, val_acc(best)=1.0000
+
+=== Generated Spectrogram Classification Accuracy ===
+Overall ACC: 74.11%
+Per-class ACC:
+  box  : 100.00%
+  jump : 64.29%
+  run  : 60.71%
+  walk : 71.43%
+
+=== w=2.6  walk_lambda=1.25 -> samples_grid/w2.6_lw1.25 ===
+[sample_video_label_flow] OK subj=S10 actions=['box', 'jump', 'run', 'walk'] out=samples_grid/w2.6_lw1.25
+[sample_video_label_flow] done -> samples_grid/w2.6_lw1.25
+[eval_gen_with_cls] device = cuda
+[eval_gen_with_cls] root   = samples_grid/w2.6_lw1.25
+[eval_gen_with_cls] ckpt   = checkpoints/radar_cls_resnet18_best.pth
+[GenRadarDataset] root=samples_grid/w2.6_lw1.25, num_images=112
+  box: 28
+  jump: 28
+  run: 28
+  walk: 28
+[eval_gen_with_cls] Loaded classifier, val_acc(best)=1.0000
+
+=== Generated Spectrogram Classification Accuracy ===
+Overall ACC: 74.11%
+Per-class ACC:
+  box  : 100.00%
+  jump : 67.86%
+  run  : 60.71%
+  walk : 67.86%
+
+=== w=2.6  walk_lambda=1.30 -> samples_grid/w2.6_lw1.30 ===
+[sample_video_label_flow] OK subj=S10 actions=['box', 'jump', 'run', 'walk'] out=samples_grid/w2.6_lw1.30
+[sample_video_label_flow] done -> samples_grid/w2.6_lw1.30
+[eval_gen_with_cls] device = cuda
+[eval_gen_with_cls] root   = samples_grid/w2.6_lw1.30
+[eval_gen_with_cls] ckpt   = checkpoints/radar_cls_resnet18_best.pth
+[GenRadarDataset] root=samples_grid/w2.6_lw1.30, num_images=112
+  box: 28
+  jump: 28
+  run: 28
+  walk: 28
+[eval_gen_with_cls] Loaded classifier, val_acc(best)=1.0000
+
+=== Generated Spectrogram Classification Accuracy ===
+Overall ACC: 75.00%
+Per-class ACC:
+  box  : 100.00%
+  jump : 67.86%
+  run  : 60.71%
+  walk : 71.43%
+
+=== w=2.6  walk_lambda=1.35 -> samples_grid/w2.6_lw1.35 ===
+[sample_video_label_flow] OK subj=S10 actions=['box', 'jump', 'run', 'walk'] out=samples_grid/w2.6_lw1.35
+[sample_video_label_flow] done -> samples_grid/w2.6_lw1.35
+[eval_gen_with_cls] device = cuda
+[eval_gen_with_cls] root   = samples_grid/w2.6_lw1.35
+[eval_gen_with_cls] ckpt   = checkpoints/radar_cls_resnet18_best.pth
+[GenRadarDataset] root=samples_grid/w2.6_lw1.35, num_images=112
+  box: 28
+  jump: 28
+  run: 28
+  walk: 28
+[eval_gen_with_cls] Loaded classifier, val_acc(best)=1.0000
+
+=== Generated Spectrogram Classification Accuracy ===
+Overall ACC: 74.11%
+Per-class ACC:
+  box  : 100.00%
+  jump : 67.86%
+  run  : 60.71%
+  walk : 67.86%
+
+=== w=2.6  walk_lambda=1.40 -> samples_grid/w2.6_lw1.40 ===
+[sample_video_label_flow] OK subj=S10 actions=['box', 'jump', 'run', 'walk'] out=samples_grid/w2.6_lw1.40
+[sample_video_label_flow] done -> samples_grid/w2.6_lw1.40
+[eval_gen_with_cls] device = cuda
+[eval_gen_with_cls] root   = samples_grid/w2.6_lw1.40
+[eval_gen_with_cls] ckpt   = checkpoints/radar_cls_resnet18_best.pth
+[GenRadarDataset] root=samples_grid/w2.6_lw1.40, num_images=112
+  box: 28
+  jump: 28
+  run: 28
+  walk: 28
+[eval_gen_with_cls] Loaded classifier, val_acc(best)=1.0000
+
+=== Generated Spectrogram Classification Accuracy ===
+Overall ACC: 72.32%
+Per-class ACC:
+  box  : 100.00%
+  jump : 67.86%
+  run  : 60.71%
+  walk : 60.71%
+
+=== w=2.6  walk_lambda=1.45 -> samples_grid/w2.6_lw1.45 ===
+[sample_video_label_flow] OK subj=S10 actions=['box', 'jump', 'run', 'walk'] out=samples_grid/w2.6_lw1.45
+[sample_video_label_flow] done -> samples_grid/w2.6_lw1.45
+[eval_gen_with_cls] device = cuda
+[eval_gen_with_cls] root   = samples_grid/w2.6_lw1.45
+[eval_gen_with_cls] ckpt   = checkpoints/radar_cls_resnet18_best.pth
+[GenRadarDataset] root=samples_grid/w2.6_lw1.45, num_images=112
+  box: 28
+  jump: 28
+  run: 28
+  walk: 28
+[eval_gen_with_cls] Loaded classifier, val_acc(best)=1.0000
+
+=== Generated Spectrogram Classification Accuracy ===
+Overall ACC: 73.21%
+Per-class ACC:
+  box  : 100.00%
+  jump : 67.86%
+  run  : 60.71%
+  walk : 64.29%
+
+=== w=2.8  walk_lambda=1.25 -> samples_grid/w2.8_lw1.25 ===
+[sample_video_label_flow] OK subj=S10 actions=['box', 'jump', 'run', 'walk'] out=samples_grid/w2.8_lw1.25
+[sample_video_label_flow] done -> samples_grid/w2.8_lw1.25
+[eval_gen_with_cls] device = cuda
+[eval_gen_with_cls] root   = samples_grid/w2.8_lw1.25
+[eval_gen_with_cls] ckpt   = checkpoints/radar_cls_resnet18_best.pth
+[GenRadarDataset] root=samples_grid/w2.8_lw1.25, num_images=112
+  box: 28
+  jump: 28
+  run: 28
+  walk: 28
+[eval_gen_with_cls] Loaded classifier, val_acc(best)=1.0000
+
+=== Generated Spectrogram Classification Accuracy ===
+Overall ACC: 74.11%
+Per-class ACC:
+  box  : 100.00%
+  jump : 60.71%
+  run  : 64.29%
+  walk : 71.43%
+
+=== w=2.8  walk_lambda=1.30 -> samples_grid/w2.8_lw1.30 ===
+[sample_video_label_flow] OK subj=S10 actions=['box', 'jump', 'run', 'walk'] out=samples_grid/w2.8_lw1.30
+[sample_video_label_flow] done -> samples_grid/w2.8_lw1.30
+[eval_gen_with_cls] device = cuda
+[eval_gen_with_cls] root   = samples_grid/w2.8_lw1.30
+[eval_gen_with_cls] ckpt   = checkpoints/radar_cls_resnet18_best.pth
+[GenRadarDataset] root=samples_grid/w2.8_lw1.30, num_images=112
+  box: 28
+  jump: 28
+  run: 28
+  walk: 28
+[eval_gen_with_cls] Loaded classifier, val_acc(best)=1.0000
+
+=== Generated Spectrogram Classification Accuracy ===
+Overall ACC: 72.32%
+Per-class ACC:
+  box  : 100.00%
+  jump : 60.71%
+  run  : 64.29%
+  walk : 64.29%
+
+=== w=2.8  walk_lambda=1.35 -> samples_grid/w2.8_lw1.35 ===
+[sample_video_label_flow] OK subj=S10 actions=['box', 'jump', 'run', 'walk'] out=samples_grid/w2.8_lw1.35
+[sample_video_label_flow] done -> samples_grid/w2.8_lw1.35
+[eval_gen_with_cls] device = cuda
+[eval_gen_with_cls] root   = samples_grid/w2.8_lw1.35
+[eval_gen_with_cls] ckpt   = checkpoints/radar_cls_resnet18_best.pth
+[GenRadarDataset] root=samples_grid/w2.8_lw1.35, num_images=112
+  box: 28
+  jump: 28
+  run: 28
+  walk: 28
+[eval_gen_with_cls] Loaded classifier, val_acc(best)=1.0000
+
+=== Generated Spectrogram Classification Accuracy ===
+Overall ACC: 71.43%
+Per-class ACC:
+  box  : 100.00%
+  jump : 60.71%
+  run  : 64.29%
+  walk : 60.71%
+
+=== w=2.8  walk_lambda=1.40 -> samples_grid/w2.8_lw1.40 ===
+[sample_video_label_flow] OK subj=S10 actions=['box', 'jump', 'run', 'walk'] out=samples_grid/w2.8_lw1.40
+[sample_video_label_flow] done -> samples_grid/w2.8_lw1.40
+[eval_gen_with_cls] device = cuda
+[eval_gen_with_cls] root   = samples_grid/w2.8_lw1.40
+[eval_gen_with_cls] ckpt   = checkpoints/radar_cls_resnet18_best.pth
+[GenRadarDataset] root=samples_grid/w2.8_lw1.40, num_images=112
+  box: 28
+  jump: 28
+  run: 28
+  walk: 28
+[eval_gen_with_cls] Loaded classifier, val_acc(best)=1.0000
+
+=== Generated Spectrogram Classification Accuracy ===
+Overall ACC: 72.32%
+Per-class ACC:
+  box  : 100.00%
+  jump : 60.71%
+  run  : 64.29%
+  walk : 64.29%
+
+=== w=2.8  walk_lambda=1.45 -> samples_grid/w2.8_lw1.45 ===
+[sample_video_label_flow] OK subj=S10 actions=['box', 'jump', 'run', 'walk'] out=samples_grid/w2.8_lw1.45
+[sample_video_label_flow] done -> samples_grid/w2.8_lw1.45
+[eval_gen_with_cls] device = cuda
+[eval_gen_with_cls] root   = samples_grid/w2.8_lw1.45
+[eval_gen_with_cls] ckpt   = checkpoints/radar_cls_resnet18_best.pth
+[GenRadarDataset] root=samples_grid/w2.8_lw1.45, num_images=112
+  box: 28
+  jump: 28
+  run: 28
+  walk: 28
+[eval_gen_with_cls] Loaded classifier, val_acc(best)=1.0000
+
+=== Generated Spectrogram Classification Accuracy ===
+Overall ACC: 70.54%
+Per-class ACC:
+  box  : 100.00%
+  jump : 60.71%
+  run  : 64.29%
+  walk : 57.14%
+
+=== w=3.0  walk_lambda=1.25 -> samples_grid/w3.0_lw1.25 ===
+[sample_video_label_flow] OK subj=S10 actions=['box', 'jump', 'run', 'walk'] out=samples_grid/w3.0_lw1.25
+[sample_video_label_flow] done -> samples_grid/w3.0_lw1.25
+[eval_gen_with_cls] device = cuda
+[eval_gen_with_cls] root   = samples_grid/w3.0_lw1.25
+[eval_gen_with_cls] ckpt   = checkpoints/radar_cls_resnet18_best.pth
+[GenRadarDataset] root=samples_grid/w3.0_lw1.25, num_images=112
+  box: 28
+  jump: 28
+  run: 28
+  walk: 28
+[eval_gen_with_cls] Loaded classifier, val_acc(best)=1.0000
+
+=== Generated Spectrogram Classification Accuracy ===
+Overall ACC: 75.00%
+Per-class ACC:
+  box  : 100.00%
+  jump : 67.86%
+  run  : 67.86%
+  walk : 64.29%
+
+=== w=3.0  walk_lambda=1.30 -> samples_grid/w3.0_lw1.30 ===
+[sample_video_label_flow] OK subj=S10 actions=['box', 'jump', 'run', 'walk'] out=samples_grid/w3.0_lw1.30
+[sample_video_label_flow] done -> samples_grid/w3.0_lw1.30
+[eval_gen_with_cls] device = cuda
+[eval_gen_with_cls] root   = samples_grid/w3.0_lw1.30
+[eval_gen_with_cls] ckpt   = checkpoints/radar_cls_resnet18_best.pth
+[GenRadarDataset] root=samples_grid/w3.0_lw1.30, num_images=112
+  box: 28
+  jump: 28
+  run: 28
+  walk: 28
+[eval_gen_with_cls] Loaded classifier, val_acc(best)=1.0000
+
+=== Generated Spectrogram Classification Accuracy ===
+Overall ACC: 74.11%
+Per-class ACC:
+  box  : 100.00%
+  jump : 67.86%
+  run  : 67.86%
+  walk : 60.71%
+
+=== w=3.0  walk_lambda=1.35 -> samples_grid/w3.0_lw1.35 ===
+[sample_video_label_flow] OK subj=S10 actions=['box', 'jump', 'run', 'walk'] out=samples_grid/w3.0_lw1.35
+[sample_video_label_flow] done -> samples_grid/w3.0_lw1.35
+[eval_gen_with_cls] device = cuda
+[eval_gen_with_cls] root   = samples_grid/w3.0_lw1.35
+[eval_gen_with_cls] ckpt   = checkpoints/radar_cls_resnet18_best.pth
+[GenRadarDataset] root=samples_grid/w3.0_lw1.35, num_images=112
+  box: 28
+  jump: 28
+  run: 28
+  walk: 28
+[eval_gen_with_cls] Loaded classifier, val_acc(best)=1.0000
+
+=== Generated Spectrogram Classification Accuracy ===
+Overall ACC: 75.00%
+Per-class ACC:
+  box  : 100.00%
+  jump : 67.86%
+  run  : 67.86%
+  walk : 64.29%
+
+=== w=3.0  walk_lambda=1.40 -> samples_grid/w3.0_lw1.40 ===
+[sample_video_label_flow] OK subj=S10 actions=['box', 'jump', 'run', 'walk'] out=samples_grid/w3.0_lw1.40
+[sample_video_label_flow] done -> samples_grid/w3.0_lw1.40
+[eval_gen_with_cls] device = cuda
+[eval_gen_with_cls] root   = samples_grid/w3.0_lw1.40
+[eval_gen_with_cls] ckpt   = checkpoints/radar_cls_resnet18_best.pth
+[GenRadarDataset] root=samples_grid/w3.0_lw1.40, num_images=112
+  box: 28
+  jump: 28
+  run: 28
+  walk: 28
+[eval_gen_with_cls] Loaded classifier, val_acc(best)=1.0000
+
+=== Generated Spectrogram Classification Accuracy ===
+Overall ACC: 75.00%
+Per-class ACC:
+  box  : 100.00%
+  jump : 67.86%
+  run  : 67.86%
+  walk : 64.29%
+
+=== w=3.0  walk_lambda=1.45 -> samples_grid/w3.0_lw1.45 ===
+[sample_video_label_flow] OK subj=S10 actions=['box', 'jump', 'run', 'walk'] out=samples_grid/w3.0_lw1.45
+[sample_video_label_flow] done -> samples_grid/w3.0_lw1.45
+[eval_gen_with_cls] device = cuda
+[eval_gen_with_cls] root   = samples_grid/w3.0_lw1.45
+[eval_gen_with_cls] ckpt   = checkpoints/radar_cls_resnet18_best.pth
+[GenRadarDataset] root=samples_grid/w3.0_lw1.45, num_images=112
+  box: 28
+  jump: 28
+  run: 28
+  walk: 28
+[eval_gen_with_cls] Loaded classifier, val_acc(best)=1.0000
+
+=== Generated Spectrogram Classification Accuracy ===
+Overall ACC: 71.43%
+Per-class ACC:
+  box  : 100.00%
+  jump : 67.86%
+  run  : 67.86%
+  walk : 50.00%
+
+=== w=3.2  walk_lambda=1.25 -> samples_grid/w3.2_lw1.25 ===
+[sample_video_label_flow] OK subj=S10 actions=['box', 'jump', 'run', 'walk'] out=samples_grid/w3.2_lw1.25
+[sample_video_label_flow] done -> samples_grid/w3.2_lw1.25
+[eval_gen_with_cls] device = cuda
+[eval_gen_with_cls] root   = samples_grid/w3.2_lw1.25
+[eval_gen_with_cls] ckpt   = checkpoints/radar_cls_resnet18_best.pth
+[GenRadarDataset] root=samples_grid/w3.2_lw1.25, num_images=112
+  box: 28
+  jump: 28
+  run: 28
+  walk: 28
+[eval_gen_with_cls] Loaded classifier, val_acc(best)=1.0000
+
+=== Generated Spectrogram Classification Accuracy ===
+Overall ACC: 74.11%
+Per-class ACC:
+  box  : 100.00%
+  jump : 60.71%
+  run  : 71.43%
+  walk : 64.29%
+
+=== w=3.2  walk_lambda=1.30 -> samples_grid/w3.2_lw1.30 ===
+[sample_video_label_flow] OK subj=S10 actions=['box', 'jump', 'run', 'walk'] out=samples_grid/w3.2_lw1.30
+[sample_video_label_flow] done -> samples_grid/w3.2_lw1.30
+[eval_gen_with_cls] device = cuda
+[eval_gen_with_cls] root   = samples_grid/w3.2_lw1.30
+[eval_gen_with_cls] ckpt   = checkpoints/radar_cls_resnet18_best.pth
+[GenRadarDataset] root=samples_grid/w3.2_lw1.30, num_images=112
+  box: 28
+  jump: 28
+  run: 28
+  walk: 28
+[eval_gen_with_cls] Loaded classifier, val_acc(best)=1.0000
+
+=== Generated Spectrogram Classification Accuracy ===
+Overall ACC: 76.79%
+Per-class ACC:
+  box  : 100.00%
+  jump : 60.71%
+  run  : 71.43%
+  walk : 75.00%
+
+=== w=3.2  walk_lambda=1.35 -> samples_grid/w3.2_lw1.35 ===
+[sample_video_label_flow] OK subj=S10 actions=['box', 'jump', 'run', 'walk'] out=samples_grid/w3.2_lw1.35
+[sample_video_label_flow] done -> samples_grid/w3.2_lw1.35
+[eval_gen_with_cls] device = cuda
+[eval_gen_with_cls] root   = samples_grid/w3.2_lw1.35
+[eval_gen_with_cls] ckpt   = checkpoints/radar_cls_resnet18_best.pth
+[GenRadarDataset] root=samples_grid/w3.2_lw1.35, num_images=112
+  box: 28
+  jump: 28
+  run: 28
+  walk: 28
+[eval_gen_with_cls] Loaded classifier, val_acc(best)=1.0000
+
+=== Generated Spectrogram Classification Accuracy ===
+Overall ACC: 74.11%
+Per-class ACC:
+  box  : 100.00%
+  jump : 60.71%
+  run  : 71.43%
+  walk : 64.29%
+
+=== w=3.2  walk_lambda=1.40 -> samples_grid/w3.2_lw1.40 ===
+[sample_video_label_flow] OK subj=S10 actions=['box', 'jump', 'run', 'walk'] out=samples_grid/w3.2_lw1.40
+[sample_video_label_flow] done -> samples_grid/w3.2_lw1.40
+[eval_gen_with_cls] device = cuda
+[eval_gen_with_cls] root   = samples_grid/w3.2_lw1.40
+[eval_gen_with_cls] ckpt   = checkpoints/radar_cls_resnet18_best.pth
+[GenRadarDataset] root=samples_grid/w3.2_lw1.40, num_images=112
+  box: 28
+  jump: 28
+  run: 28
+  walk: 28
+[eval_gen_with_cls] Loaded classifier, val_acc(best)=1.0000
+
+=== Generated Spectrogram Classification Accuracy ===
+Overall ACC: 72.32%
+Per-class ACC:
+  box  : 100.00%
+  jump : 60.71%
+  run  : 71.43%
+  walk : 57.14%
+
+=== w=3.2  walk_lambda=1.45 -> samples_grid/w3.2_lw1.45 ===
+[sample_video_label_flow] OK subj=S10 actions=['box', 'jump', 'run', 'walk'] out=samples_grid/w3.2_lw1.45
+[sample_video_label_flow] done -> samples_grid/w3.2_lw1.45
+[eval_gen_with_cls] device = cuda
+[eval_gen_with_cls] root   = samples_grid/w3.2_lw1.45
+[eval_gen_with_cls] ckpt   = checkpoints/radar_cls_resnet18_best.pth
+[GenRadarDataset] root=samples_grid/w3.2_lw1.45, num_images=112
+  box: 28
+  jump: 28
+  run: 28
+  walk: 28
+[eval_gen_with_cls] Loaded classifier, val_acc(best)=1.0000
+
+=== Generated Spectrogram Classification Accuracy ===
+Overall ACC: 73.21%
+Per-class ACC:
+  box  : 100.00%
+  jump : 60.71%
+  run  : 71.43%
+  walk : 60.71%

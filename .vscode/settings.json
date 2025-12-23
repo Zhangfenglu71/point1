@@ -1,0 +1,22 @@
+{
+  "files.exclude": {
+    "**/__pycache__/": true,
+    "**/*.pyc": true,
+    "**/*.pyo": true,
+    "**/.DS_Store": true,
+    "**/._*": true,
+    "**/.ipynb_checkpoints": true,
+    "**/.ipynb_checkpoints/**": true,
+
+    "**/__init__.py": true
+  },
+  "search.exclude": {
+    "**/__pycache__/": true,
+    "**/*.pyc": true,
+    "**/.DS_Store": true,
+    "**/._*": true,
+    "**/.ipynb_checkpoints/**": true,
+
+    "**/__init__.py": true
+  }
+}
