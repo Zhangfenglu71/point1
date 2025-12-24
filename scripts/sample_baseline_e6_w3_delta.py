@@ -30,7 +30,8 @@ cv2.setNumThreads(0)
 # ===== 固定：baseline E6 的 4 类动作 =====
 ACTIONS = ["box", "jump", "run", "walk"]
 
-# ===== 固定：baseline E6 的 CFG w（不可改）=====
+# ===== baseline E6 的默认 CFG w（默认不变：3.0）=====
+# NOTE: 通过命令行 --cfg_w 可覆盖；不传时与旧行为完全一致。
 BASELINE_CFG_W = 3.0
 
 
@@ -321,39 +322,17 @@ class DeltaStatsLogger:
 class VelocityCFG(nn.Module):
     """
     v_cfg = v_uncond + w*(v_cond - v_uncond)
-
-    支持两种模式：
-    1) fixed:  w = cfg_w（原逻辑）
-    2) adaptive (Δv-normalized): 让每一步的放大后的Δv“能量”保持在 target 上
-       w_t = clip(cfg_w * target / (||Δv|| + eps), w_min, w_max)
-       target 默认取每次采样的第0步 batch mean(||Δv||)
+    - uncond 使用 y_zero（严格复用你现有定义：y0=zeros_like(y)）
     """
-    def __init__(
-        self,
-        base: nn.Module,
-        cfg_w: float,
-        delta_logger: Optional[DeltaStatsLogger] = None,
-        adaptive: bool = False,
-        w_min: float = 0.0,
-        w_max: float = 6.0,
-        eps: float = 1e-8,
-    ):
+    def __init__(self, base: nn.Module, cfg_w: float, delta_logger: Optional[DeltaStatsLogger] = None):
         super().__init__()
         self.base = base
         self.cfg_w = float(cfg_w)
         self.delta_logger = delta_logger
-
-        self.adaptive = bool(adaptive)
-        self.w_min = float(w_min)
-        self.w_max = float(w_max)
-        self.eps = float(eps)
-
         self._step_counter = 0
-        self._target_norm = None  # 每次采样重置；用于 adaptive 模式
 
     def reset_stats_state(self):
         self._step_counter = 0
-        self._target_norm = None
         if self.delta_logger is not None:
             self.delta_logger.reset()
 
@@ -365,8 +344,7 @@ class VelocityCFG(nn.Module):
         else:
             t_scalar = float(t)
 
-        # ====== 原逻辑：w==1 就只跑 cond（为了速度）======
-        if (not self.adaptive) and abs(self.cfg_w - 1.0) < 1e-8:
+        if abs(self.cfg_w - 1.0) < 1e-8:
             v_c = self.base(x, t, y=y, **kwargs)
             if self.delta_logger is not None:
                 v_u = v_c
@@ -374,7 +352,6 @@ class VelocityCFG(nn.Module):
                 self._step_counter += 1
             return v_c
 
-        # ====== 计算 uncond / cond ======
         y0 = torch.zeros_like(y)
         v_u = self.base(x, t, y=y0, **kwargs)
         v_c = self.base(x, t, y=y, **kwargs)
@@ -383,28 +360,7 @@ class VelocityCFG(nn.Module):
             self.delta_logger.log_step(self._step_counter, t_scalar, v_u, v_c)
             self._step_counter += 1
 
-        delta = (v_c - v_u)
-
-        # ====== fixed CFG ======
-        if not self.adaptive:
-            return v_u + self.cfg_w * delta
-
-        # ====== adaptive CFG (Δv-normalized) ======
-        B = delta.shape[0]
-        d_flat = delta.reshape(B, -1)
-        d_norm = torch.linalg.vector_norm(d_flat, ord=2, dim=1)  # (B,)
-
-        # 用第0步的 batch mean(||Δv||) 做 target
-        if self._target_norm is None:
-            self._target_norm = d_norm.mean().detach()
-
-        w_t = self.cfg_w * (self._target_norm / (d_norm + self.eps))  # (B,)
-        w_t = torch.clamp(w_t, self.w_min, self.w_max)
-
-        # broadcast 到 (B,C,H,W)
-        w_t = w_t.view(B, 1, 1, 1)
-        return v_u + w_t * delta
-
+        return v_u + self.cfg_w * (v_c - v_u)
 
 
 def _sample_images(rf: RectifiedFlow, y: torch.Tensor, num_steps: int, seed: int, B: int) -> torch.Tensor:
@@ -435,6 +391,14 @@ def main():
     parser.add_argument("--out_dir", type=str, default="samples_baseline_e6_w3",
                         help="Output dir for images/grids/meta/csv (avoid overwrite by using different dirs).")
 
+    # ===== 新增：CFG 权重（默认 3.0，保持旧行为不变） =====
+    parser.add_argument("--cfg_w", type=float, default=BASELINE_CFG_W,
+                        help="CFG guidance weight (default: 3.0, same as baseline E6).")
+
+    # ===== 可选：实验标记写入 meta（默认空，不影响旧行为） =====
+    parser.add_argument("--tag", type=str, default="",
+                        help="Optional tag written into meta_delta.json for experiment tracking.")
+
     # ===== delta stats =====
     parser.add_argument("--log_delta_stats", action="store_true",
                         help="Enable logging CFG delta stats (Δv=v_cond-v_uncond) per step.")
@@ -448,8 +412,10 @@ def main():
         train_cfg.device if torch.cuda.is_available() and "cuda" in str(train_cfg.device) else "cpu"
     )
 
+    cfg_w = float(args.cfg_w)
+
     print(
-        f"[sample_baseline_e6_w3_delta] device={device}, cfg_w={BASELINE_CFG_W}, "
+        f"[sample_baseline_e6_w3_delta] device={device}, cfg_w={cfg_w}, "
         f"steps={args.num_steps}, seed={args.seed}, alpha={args.alpha}"
     )
     print(
@@ -492,7 +458,7 @@ def main():
     meta = {
         "name": "baseline_e6_w3_delta",
         "out_dir": str(out_dir.resolve()),
-        "cfg_w": BASELINE_CFG_W,
+        "cfg_w": cfg_w,
         "num_steps": int(args.num_steps),
         "seed": int(args.seed),
         "seed_rule": "seed = base_seed + subj_idx*1000 + act_idx*10",
@@ -525,6 +491,10 @@ def main():
         "model_type": str(args.model_type),
         "base_ch": int(final_base_ch),
     }
+
+    # 可选：写入实验标记，便于区分不同训练变体（默认空，不写，不影响旧行为）
+    if getattr(args, "tag", ""):
+        meta["training_variant"] = str(args.tag)
     meta_path = out_dir / "meta_delta.json"
     meta_path.write_text(json.dumps(meta, indent=2, ensure_ascii=False))
     print(f"[sample_baseline_e6_w3_delta] meta saved -> {meta_path}")
@@ -554,15 +524,7 @@ def main():
     delta_logger = DeltaStatsLogger() if args.log_delta_stats else None
     delta_rows_all: List[Dict[str, float]] = []
 
-    model = VelocityCFG(
-    base,
-    cfg_w=BASELINE_CFG_W,
-    delta_logger=delta_logger,
-    adaptive=True,   # ✅ 开启 Δv-normalized adaptive CFG
-    w_min=0.0,
-    w_max=6.0,       # 你可以先设 6，避免过大
-    ).to(device).eval()
-
+    model = VelocityCFG(base, cfg_w=cfg_w, delta_logger=delta_logger).to(device).eval()
 
     rf = RectifiedFlow(
         data_shape=(3, train_cfg.img_size, train_cfg.img_size),
@@ -609,7 +571,7 @@ def main():
             eval_imgs_by_action[action] = (imgs, vp)
 
             for k, img in enumerate(imgs):
-                save_image(img, out_dir / f"{action}_{subj}_{vp.stem}_w{BASELINE_CFG_W:g}_{k:03d}.png")
+                save_image(img, out_dir / f"{action}_{subj}_{vp.stem}_w{cfg_w:g}_{k:03d}.png")
             generated["images_saved_eval"] += B_eval
 
             if args.log_delta_stats and delta_logger is not None:
@@ -629,10 +591,10 @@ def main():
             grid_all.append(imgs[:B_grid])
         grid_imgs = torch.cat(grid_all, dim=0)
 
-        save_image(grid_imgs, grid_dir / f"grid_{subj}_w{BASELINE_CFG_W:g}.png", nrow=B_grid)
+        save_image(grid_imgs, grid_dir / f"grid_{subj}_w{cfg_w:g}.png", nrow=B_grid)
         generated["images_saved_grid"] += (len(ACTIONS) * B_grid)
 
-        print(f"[sample_baseline_e6_w3_delta] saved grid_{subj}_w{BASELINE_CFG_W:g}.png")
+        print(f"[sample_baseline_e6_w3_delta] saved grid_{subj}_w{cfg_w:g}.png")
         generated["subjects_done"] += 1
 
     # ===== 写 delta_stats.csv =====
